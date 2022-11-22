@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { PlusCircle } from "phosphor-react";
+import { Task } from "./components/Task";
+import { EmptyTask } from "./components/EmptyTask";
+import { PlusCircle, Trash } from "phosphor-react";
 import rocketLogo from "./assets/rocket.svg";
-import clipboard from "./assets/Clipboard.png";
 
 import "./global.css";
 import styles from "./App.module.css";
@@ -36,15 +37,10 @@ function App() {
             <span>5</span>
           </div>
         </div>
-        <div className={styles.emptyContent}>
-          <img src={clipboard} alt="" />
-          <strong className={styles.strong1}>
-            Você ainda não tem tarefas cadastradas
-          </strong>
-          <strong className={styles.strong2}>
-            Crie tarefas e organize seus itens a fazer
-          </strong>
+        <div className={styles.listContent}>
+          <Task />
         </div>
+        {/*<EmptyTask />*/}
       </div>
     </div>
   );
