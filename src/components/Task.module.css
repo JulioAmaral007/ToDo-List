@@ -4,8 +4,48 @@
   background-color: var(--gray-500);
   display: flex;
   align-items: flex-start;
-  justify-content: space-evenly;
   border-radius: 8px;
-  font-size: 0.875;
   padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.check input {
+  display: none;
+}
+
+.check span {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background-color: transparent;
+  border: 3px solid var(--blue);
+  border-radius: 999px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray-500);
+  font-weight: bold;
+}
+
+.check input:checked + span {
+  background-color: var(--purple-dark);
+  border: 3px solid var(--purple-dark);
+}
+
+.content {
+  display: flex;
+  width: 632px;
+  font-size: 0.875;
+  margin: auto 0.75rem;
+  justify-content: center;
+}
+
+.tasks button {
+  background: transparent;
+  border: 0;
+  color: var(--gray-300);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
 }

@@ -1,14 +1,32 @@
-import { Trash } from "phosphor-react";
+import { Trash, Check } from "phosphor-react";
 import styles from "./Task.module.css";
 
-export function Task() {
+interface TaskProps {
+  content: string;
+  onDeleteComments: (task: string) => void;
+}
+
+export function Task({ content, onDeleteComments }: TaskProps) {
+  function handleDeleteComment() {
+    onDeleteComments(content);
+  }
+
   return (
     <div className={styles.tasks}>
-      <input type="checkbox" />
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, similique.
-      </p>
-      <Trash size={24} />
+      <label className={styles.check}>
+        {" "}
+        <input type="checkbox" name="check" />
+        <span>
+          <Check />
+        </span>
+      </label>
+      <div className={styles.content}>
+        <p>{content}</p>
+      </div>
+      <button onClick={handleDeleteComment} title="Deletar comentário">
+        {" "}
+        <Trash size={24} />
+      </button>
     </div>
   );
 }
