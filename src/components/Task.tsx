@@ -1,31 +1,30 @@
-import { Trash, Check } from "phosphor-react";
-import styles from "./Task.module.css";
+import { Trash, CheckCircle } from "phosphor-react";
 
-interface TaskProps {
-  content: string;
-  onDeleteComments: (task: string) => void;
+import styles from "./Task.module.css";
+import { ITask } from "./../App";
+
+interface Props {
+  task: ITask;
+  onComplete: (taskId: string) => void;
+  onDelete: (taskId: string) => void;
 }
 
-export function Task({ content, onDeleteComments }: TaskProps) {
-  function handleDeleteComment() {
-    onDeleteComments(content);
-  }
-
+export function Task({ task, onComplete, onDelete }: Props) {
   return (
-    <div className={styles.tasks}>
-      <label className={styles.check}>
-        {" "}
-        <input type="checkbox" name="check" />
-        <span>
-          <Check />
-        </span>
-      </label>
-      <div className={styles.content}>
-        <p>{content}</p>
-      </div>
-      <button onClick={handleDeleteComment} title="Deletar comentário">
-        {" "}
-        <Trash size={24} />
+    <div className={styles.task}>
+      <button
+        className={styles.checkContainer}
+        onClick={() => onComplete(task.id)}
+      >
+        {task.isCompleted ? <CheckCircle /> : <div />}
+      </button>
+
+      <p className={task.isCompleted ? styles.textCompleted : ""}>
+        {task.title}
+      </p>
+
+      <button className={styles.deleteButton} onClick={() => onDelete(task.id)}>
+        <Trash size={20} />
       </button>
     </div>
   );
